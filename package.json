@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "start": "ts-node ./core/quicker-tree-select.ts",
+    "build": "rollup --config",
+    "test": "jest",
+    "test:snapshot": "jest --updateSnapshot"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.8",
+    "rollup": "^4.55.1",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6"
+  }
+}
