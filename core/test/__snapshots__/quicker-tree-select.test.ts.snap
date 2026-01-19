@@ -1,6 +1,173 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`携带状态的数据验证 初始值 1`] = `
+{
+  "result": {
+    "restRelatedTags": [
+      "密码相关",
+      "项目",
+      "个人",
+    ],
+    "selectedTagsMatchedData": [
+      {
+        "tags": [
+          "密码相关",
+          "项目",
+        ],
+        "value": [
+          "123456",
+          "456789",
+        ],
+      },
+      {
+        "tags": [
+          "密码相关",
+          "个人",
+        ],
+        "value": [
+          "123456",
+          "456789",
+        ],
+      },
+    ],
+  },
+  "state": {
+    "dataSource": [
+      {
+        "tags": [
+          "密码相关",
+          "项目",
+        ],
+        "value": [
+          "123456",
+          "456789",
+        ],
+      },
+      {
+        "tags": [
+          "密码相关",
+          "个人",
+        ],
+        "value": [
+          "123456",
+          "456789",
+        ],
+      },
+    ],
+    "selectedTags": [],
+  },
+}
+`;
+
 exports[`携带状态的数据验证 对选择一个tag后的数据进行初始化 1`] = `
+{
+  "result": {
+    "restRelatedTags": [],
+    "selectedTagsMatchedData": [
+      {
+        "tags": [
+          "密码相关",
+          "项目",
+        ],
+        "value": [
+          "123456",
+          "456789",
+        ],
+      },
+    ],
+  },
+  "state": {
+    "dataSource": [
+      {
+        "tags": [
+          "密码相关",
+          "项目",
+        ],
+        "value": [
+          "123456",
+          "456789",
+        ],
+      },
+      {
+        "tags": [
+          "密码相关",
+          "个人",
+        ],
+        "value": [
+          "123456",
+          "456789",
+        ],
+      },
+    ],
+    "selectedTags": [
+      "密码相关",
+      "项目",
+    ],
+  },
+}
+`;
+
+exports[`携带状态的数据验证 连续选择 1`] = `
+{
+  "result": {
+    "restRelatedTags": [
+      "项目",
+      "个人",
+    ],
+    "selectedTagsMatchedData": [
+      {
+        "tags": [
+          "密码相关",
+          "项目",
+        ],
+        "value": [
+          "123456",
+          "456789",
+        ],
+      },
+      {
+        "tags": [
+          "密码相关",
+          "个人",
+        ],
+        "value": [
+          "123456",
+          "456789",
+        ],
+      },
+    ],
+  },
+  "state": {
+    "dataSource": [
+      {
+        "tags": [
+          "密码相关",
+          "项目",
+        ],
+        "value": [
+          "123456",
+          "456789",
+        ],
+      },
+      {
+        "tags": [
+          "密码相关",
+          "个人",
+        ],
+        "value": [
+          "123456",
+          "456789",
+        ],
+      },
+    ],
+    "selectedTags": [
+      "密码相关",
+    ],
+  },
+}
+`;
+
+exports[`携带状态的数据验证 连续选择 2`] = `
 {
   "result": {
     "restRelatedTags": [],

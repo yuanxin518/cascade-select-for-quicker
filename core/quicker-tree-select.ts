@@ -6,9 +6,13 @@ import type { DataSourceType, DataWithState } from "./types";
  * @param dataWithState 当前的状态数据
  */
 export function initDataWithState(
-  dataSource: DataSourceType[],
-  dataWithState?: DataWithState
+  _dataSource: DataSourceType[],
+  dataWithState?: DataWithState | null
 ) {
+  const dataSource = dataWithState?.state.dataSource
+    ? dataWithState.state.dataSource
+    : _dataSource;
+
   const stateData: DataWithState = dataWithState ?? {
     state: {
       dataSource: dataSource,
@@ -26,12 +30,14 @@ export function initDataWithState(
    */
   const updateDataResult = (): DataWithState => {
     const { state, result } = stateData;
-    result.selectedTagsMatchedData = state.dataSource.filter((item) =>
+
+    result.selectedTagsMatchedData = dataSource.filter((item) =>
       state.selectedTags.every((tag) => item.tags.includes(tag))
     );
+    // 剩余可选tag
     result.restRelatedTags = [
       ...new Set(
-        state.dataSource
+        dataSource
           .filter((item) =>
             state.selectedTags.every((tag) => item.tags.includes(tag))
           )
@@ -40,8 +46,8 @@ export function initDataWithState(
           .filter((item) => !state.selectedTags.includes(item))
       ),
     ];
-    stateData.result = result;
 
+    Object.assign(stateData, { state, result });
     return stateData;
   };
 
@@ -51,7 +57,10 @@ export function initDataWithState(
     return updateDataResult();
   };
 
+  updateDataResult();
+
   return {
     selectTag,
+    stateData,
   };
 }

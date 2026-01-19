@@ -1,16 +1,22 @@
 import * as rollup from "rollup";
 import typescript from "@rollup/plugin-typescript";
+import path from "path";
+import fs from "fs/promises";
 
 /** 移除export相关代码 */
 export function removeExportDefault() {
   return {
     name: "remove-export-default",
-    renderChunk(code: string) {
+    async renderChunk(code: string) {
+      const quickerScriptCode = await fs.readFile(
+        path.resolve("./core/quicker-app-exec-script.js"),
+        "utf-8"
+      );
       let result = code;
       result = result.replace(/^.*export\s+default.*$/gm, "");
       result = result.replace(/^.*export\s*\{.*$/gm, "");
       result = result.replace(/^export\s+([a-zA-Z])/gm, "$1");
-      return result;
+      return result + "\n" + quickerScriptCode;
     },
   };
 }
