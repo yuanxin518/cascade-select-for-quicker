@@ -10,7 +10,7 @@ export function removeExportDefault() {
     async renderChunk(code: string) {
       const quickerScriptCode = await fs.readFile(
         path.resolve("./core/quicker-app-exec-script.js"),
-        "utf-8"
+        "utf-8",
       );
       let result = code;
       result = result.replace(/^.*export\s+default.*$/gm, "");
@@ -21,7 +21,7 @@ export function removeExportDefault() {
   };
 }
 
-export default {
+const config: rollup.RollupOptions = {
   input: "./core/quicker-tree-select.ts",
   output: [
     {
@@ -37,3 +37,4 @@ export default {
   ],
   plugins: [typescript()],
 };
+export default config;

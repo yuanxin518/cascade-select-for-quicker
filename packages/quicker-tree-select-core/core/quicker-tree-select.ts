@@ -7,15 +7,15 @@ import type { DataSourceType, DataWithState } from "./types";
  */
 export function initDataWithState(
   _dataSource: DataSourceType[],
-  dataWithState?: DataWithState | null
+  dataWithState?: DataWithState | null,
 ) {
-  const dataSource = dataWithState?.state.dataSource
-    ? dataWithState.state.dataSource
+  const dataSource = dataWithState?.dataSource
+    ? dataWithState.dataSource
     : _dataSource;
 
   const stateData: DataWithState = dataWithState ?? {
+    dataSource: dataSource,
     state: {
-      dataSource: dataSource,
       selectedTags: [],
     },
     result: {
@@ -32,18 +32,18 @@ export function initDataWithState(
     const { state, result } = stateData;
 
     result.selectedTagsMatchedData = dataSource.filter((item) =>
-      state.selectedTags.every((tag) => item.tags.includes(tag))
+      state.selectedTags.every((tag) => item.tags.includes(tag)),
     );
     // 剩余可选tag
     result.restRelatedTags = [
       ...new Set(
         dataSource
           .filter((item) =>
-            state.selectedTags.every((tag) => item.tags.includes(tag))
+            state.selectedTags.every((tag) => item.tags.includes(tag)),
           )
           .map((item) => item.tags)
           .flat()
-          .filter((item) => !state.selectedTags.includes(item))
+          .filter((item) => !state.selectedTags.includes(item)),
       ),
     ];
 
@@ -57,10 +57,26 @@ export function initDataWithState(
     return updateDataResult();
   };
 
+  /** 移除多个tag */
+  const removeTag = (tags: string[]) => {
+    stateData.state.selectedTags = stateData.state.selectedTags.filter(
+      (item) => !tags.includes(item),
+    );
+    return updateDataResult();
+  };
+
+  /** 覆盖选中tag列表 */
+  const overrideTagList = (tags: string[]) => {
+    stateData.state.selectedTags = tags;
+    return updateDataResult();
+  };
+
   updateDataResult();
 
   return {
     selectTag,
+    removeTag,
+    overrideTagList,
     stateData,
   };
 }
