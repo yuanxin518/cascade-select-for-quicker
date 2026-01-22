@@ -1,14 +1,28 @@
 import { initDataWithState } from "quicker-tree-select-core";
-import data from "quicker-tree-select-core/data";
-import type { DataSourceType } from "quicker-tree-select-core/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchDataSource } from "../providers/data-fetcher-provider";
 
 export const useQuickerTreeSelectData = () => {
   const [dataWithStateInstance, setDataWithStateInstance] = useState(() => {
-    return initDataWithState(data as unknown as DataSourceType[]);
+    return initDataWithState([]);
   });
 
-  const dataWithState = dataWithStateInstance.stateData
+  const initDataSource = async () => {
+    try {
+      const data = await fetchDataSource();
+      // 创建新的实例并更新状态以触发重新渲染
+      const newDataWithStateInstance = initDataWithState(data);
+      setDataWithStateInstance(newDataWithStateInstance);
+    } catch (error) {
+      console.error('Failed to load data:', error);
+    }
+  };
+
+  useEffect(() => {
+    initDataSource();
+  }, []);
+
+  const dataWithState = dataWithStateInstance.stateData;
 
   /** 选择一个tag */
   const selectTag = (tag: string) => {
@@ -39,7 +53,7 @@ export const useQuickerTreeSelectData = () => {
     handleSelectTags(selectedTags.filter((item) => item !== tag));
   };
 
-  const selectedTagsMatchedData = dataWithStateInstance.stateData.result.selectedTagsMatchedData
+  const selectedTagsMatchedData = dataWithStateInstance.stateData.result.selectedTagsMatchedData;
 
   return {
     dataWithState,

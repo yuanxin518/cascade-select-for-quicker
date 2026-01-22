@@ -73,10 +73,14 @@ export function initDataWithState(
 
   updateDataResult();
 
+  const updataDataSource = (dataSource: DataSourceType[]) => {
+    stateData.dataSource.splice(0, stateData.dataSource.length, ...dataSource)
+  }
   return {
     selectTag,
     removeTag,
     overrideTagList,
     stateData,
+    updataDataSource
   };
 }
