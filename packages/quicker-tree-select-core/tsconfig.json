@@ -11,14 +11,8 @@
     // "types": [],
     // For nodejs:
     "downlevelIteration": true,
-    "lib": [
-      "ESNext",
-      "DOM.Iterable"
-    ],
-    "types": [
-      "node",
-      "jest"
-    ],
+    "lib": ["ESNext", "DOM.Iterable"],
+    "types": ["node", "jest"],
     // and npm install -D @types/node
     // Other Outputs
     "sourceMap": true,
@@ -43,10 +37,7 @@
     "esModuleInterop": true,
     "moduleDetection": "force",
     "moduleResolution": "node",
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
-  "include": [
-    "./core/quicker-tree-select.ts",
-    "core/types.ts",
-  ]
+  "include": ["./core/quicker-tree-select.ts", "core/types.ts"]
 }

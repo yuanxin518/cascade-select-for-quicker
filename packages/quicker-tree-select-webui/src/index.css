@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "@heroui/styles";
+@import 'tailwindcss';
+@import '@heroui/styles';
 
 :root,
 body,
@@ -8,4 +8,8 @@ html {
   padding: 0;
   height: 100%;
   width: 100%;
+}
+
+body {
+  background-color: #f0f0f0;
 }

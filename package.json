@@ -4,7 +4,9 @@
     "start": "pnpm run -C packages/quicker-tree-select-core start",
     "build": "pnpm run -C packages/quicker-tree-select-core build",
     "test": "pnpm run -C packages/quicker-tree-select-core test",
-    "test:snapshot": "pnpm run -C packages/quicker-tree-select-core test:snapshot"
+    "test:snapshot": "pnpm run -C packages/quicker-tree-select-core test:snapshot",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "workspaces": [
     "packages/quicker-tree-select-core",
@@ -12,5 +14,8 @@
   ],
   "dependencies": {
     "@types/node": "^25.0.9"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
   }
 }
