@@ -1,12 +1,11 @@
 import './App.css'
-import { Chip, CloseButton, Label, Separator, Surface, Toast } from '@heroui/react'
-
+import { Chip, Label, Separator, Surface, Toast } from '@heroui/react'
+import { Xmark } from '@gravity-ui/icons'
 import { useQuickerTreeSelectData } from './hooks/use-quicker-tree-select-data'
 import { DataWithStateContext } from './context/dataWithStateContext'
 import { RestTagSelect } from './components/RestTagSelect'
 import React from 'react'
 import { TagMatchedDataView } from './components/TagMatchDataView'
-import { Xmark } from '@gravity-ui/icons'
 
 function App() {
   const quickerTreeSelectData = useQuickerTreeSelectData()
@@ -20,7 +19,7 @@ function App() {
       <Toast.Container />
       <div className="w-full min-h-screen flex items-start justify-center py-4 px-2">
         <Surface
-          className="flex w-full min-w-[320px] max-w-full md:max-w-[1000px] gap-3 p-4 sm:p-6 flex-col border rounded-2xl sm:rounded-3xl border-[#eee] mx-auto"
+          className="flex w-full min-w-[320px] max-w-full md:max-w-[1000px] gap-3 p-4 sm:p-6 flex-col border rounded-2xl sm:rounded-3xl bg-gray-100 border-gray-200 mx-auto"
           variant="default"
         >
           <Label className="text-[var(--color-primary)] font-bold text-xl">选择标签</Label>
