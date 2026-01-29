@@ -1,6 +1,11 @@
 {
   "scripts": {
     "dev:ui": "pnpm run -C packages/quicker-tree-select-webui dev",
+    "dev:server": "pnpm run -C server dev",
+    "dev:all": "./start-all.sh",
+    "start:server": "./start-server.sh",
+    "start:ui": "./start-webui.sh",
+    "start:all": "./start-all.sh",
     "start": "pnpm run -C packages/quicker-tree-select-core start",
     "build": "pnpm run -C packages/quicker-tree-select-core build",
     "test": "pnpm run -C packages/quicker-tree-select-core test",
@@ -10,6 +15,8 @@
   },
   "workspaces": [
     "packages/quicker-tree-select-core",
+    "packages/quicker-tree-select-datasource",
+    "packages/quicker-tree-select-adapter",
     "packages/quicker-tree-select-webui"
   ],
   "dependencies": {
